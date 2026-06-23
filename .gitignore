@@ -1,0 +1,7 @@
+/*
+*.swp
+!.gitignore
+!/ex*
+*.gch
+*.o
+*.out
