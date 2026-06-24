@@ -7,12 +7,14 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat(const size_t grade)
+		Bureaucrat(const size_t grade, const std::string name)
 		~Bureaucrat(void)
 		GradeTooHighException(void)
 		GradeTooLowException(void)
-		void	getGrade(const Bureaucrat &target)
-		void	getName(const Bureaucrat &target)
+		void	getGrade(void)
+		void	getName(void)
+		void	incrementGrade(void)
+		void	decrementGrade(void)
 
 		class GradeTooHighException : public std::exception
 		{
