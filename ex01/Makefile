@@ -14,6 +14,7 @@ INC = -I.
 
 SRC += main.cpp
 SRC += Bureaucrat.cpp
+SRC += Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.d)
