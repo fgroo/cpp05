@@ -10,7 +10,7 @@ ifeq ($(DEBUG), 1)
 	CXXFLAGS += -g
 endif
 
-INC = .I-
+INC = -I.
 
 SRC += main.cpp
 SRC += Bureaucrat.cpp
@@ -18,16 +18,15 @@ SRC += Bureaucrat.cpp
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.d)
 
-$(NAME) : all
+all : $(NAME)
 
-$(SRC) : $(OBJ)
+$(NAME) : $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 %.o : %.cpp
-	$(CXX) -c $(CXXFLAGS) $(SRC)
+	$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
--include $(DEP)
 clean :
-	rm -fr $(OBJ) $(DEP)
+	rm -fr $(OBJ) $(DEP) *.gch a.out
 fclean : clean
 	rm -fr $(NAME)
 re : fclean all

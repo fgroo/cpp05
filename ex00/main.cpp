@@ -4,7 +4,8 @@ int main()
 {
 	try
 	{
-		Bureaucrat
+		Bureaucrat Büro(151, "Büro");
+		std::cout << Büro << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException &e)
 	{
