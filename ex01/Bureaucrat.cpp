@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(void) : name("nameless"), grade(150)
 {
@@ -17,7 +18,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.name), grade(src.grade)
 {
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &rhs)
 	{
@@ -70,7 +71,18 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade is too low!";
 }
 
-Form::signForm(void) : 
+void Buroaucrat::signForm(Form	&form) : 
 {
+	try
+	{
+		beSigned(*this);
+
+		std::cout << this.getName() << " signed " << form.name << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << this.getName() << " couldn’t sign " << form.name << " because " << e.what() << std::endl;
+	}
+	
 }
 

@@ -3,7 +3,8 @@
 
 # include <iostream>
 # include <exception>
-# include "Buroaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -13,7 +14,7 @@ class Form
 		Form(std::string name);
 		Form(std::string name, size_t grade);
 		Form(Form &other);
-		beSigned(Buroaucrat &target);
+		void	beSigned(Bureaucrat &target);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -28,12 +29,12 @@ class Form
 
 	private:
 		const std::string	name;
-		const bool			is_signed;
+		bool				is_signed;
 		const size_t		grade;
 		const size_t		required_grade_for_signing;
 		const size_t		required_grade_for_executing;
 };
 
-std::ostream	&operator<<(std::ostream &os, const Bureaucrat &obj);
+std::ostream	&operator<<(std::ostream &os, const Form &obj);
 
 #endif
