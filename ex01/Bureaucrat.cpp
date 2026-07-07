@@ -70,3 +70,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade is too low!";
 }
 
+Form::signForm(void) : 
+{
+}
+

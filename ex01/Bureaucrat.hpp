@@ -1,13 +1,16 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
-#include <exception>
+# include <iostream>
+# include <exception>
+# include "Form.hpp"
 
 class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
+		Bureaucrat(const std::string name);
+		Bureaucrat(const size_t grade);
 		Bureaucrat(const size_t grade, const std::string name);
 		Bureaucrat(const Bureaucrat &src);
 		Bureaucrat &operator=(const Bureaucrat &rhs);
@@ -16,6 +19,7 @@ class Bureaucrat
 		std::string	getName(void) const;
 		void		incrementGrade(void);
 		void		decrementGrade(void);
+		void		signForm(void);
 
 		class GradeTooHighException : public std::exception
 		{
