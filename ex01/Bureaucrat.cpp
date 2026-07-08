@@ -20,10 +20,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.name), grade(src.grade)
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	if (this != &rhs)
-	{
-		this->grade = rhs.grade;
-	}
+	if (this != &other)
+		this->grade = other.grade;
 	return *this;
 }
 
@@ -71,17 +69,17 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade is too low!";
 }
 
-void Buroaucrat::signForm(Form	&form) : 
+void Bureaucrat::signForm(Form	&form)
 {
 	try
 	{
-		beSigned(*this);
+		form.beSigned(*this);
 
-		std::cout << this.getName() << " signed " << form.name << std::endl;
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cout << this.getName() << " couldn’t sign " << form.name << " because " << e.what() << std::endl;
+		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 	
 }
