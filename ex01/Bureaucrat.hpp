@@ -12,7 +12,7 @@ class Bureaucrat
 		Bureaucrat(void);
 		Bureaucrat(const std::string name);
 		Bureaucrat(const size_t grade);
-		Bureaucrat(const size_t grade, const std::string name);
+		Bureaucrat(const std::string name, const size_t grade);
 		Bureaucrat(const Bureaucrat &src);
 		Bureaucrat &operator=(const Bureaucrat &other);
 		~Bureaucrat(void);

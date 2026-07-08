@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat(void) : name("nameless"), grade(150)
 {
 }
 
-Bureaucrat::Bureaucrat(size_t grade, std::string name) : name(name.empty() ? "nameless" : name)
+Bureaucrat::Bureaucrat(std::string name, size_t grade) : name(name.empty() ? "nameless" : name)
 {
 	if (grade < 1)
 		throw GradeTooHighException();

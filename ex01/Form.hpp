@@ -12,11 +12,10 @@ class Form
 	public:
 		Form(void);
 		Form(std::string name);
-		Form(size_t grade);
-		Form(std::string name, size_t grade);
+		Form(std::string name, size_t required_grade_for_signing, size_t required_grade_for_executing);
 		Form(Form &src);
 		std::string	getName(void) const;
-		size_t	getGrade(void) const;
+		// size_t	getGrade(void) const;
 		size_t	getRequired_grade_for_signing(void) const;
 		size_t	getRequired_grade_for_executing(void) const;
 
@@ -35,7 +34,7 @@ class Form
 
 	private:
 		const std::string	name;
-		const size_t		grade;
+		// const size_t		grade;
 		bool				is_signed;
 		const size_t		required_grade_for_signing;
 		const size_t		required_grade_for_executing;
