@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main()
 {
@@ -64,12 +64,12 @@ int main()
 
 	std::cout << "next part: the form" << std::endl;
 
-	Bureaucrat	toolow("too low", 130);
-	Form		form("for the students", 30, 10);
-	toolow.signForm(form);
+	// Bureaucrat	toolow("too low", 130);
+	// Form		form("for the students", 30, 10);
+	// toolow.signForm(form);
 
-	Bureaucrat	toolow2("too high", 5);
-	toolow2.signForm(form);
+	// Bureaucrat	toolow2("too high", 5);
+	// toolow2.signForm(form);
 
 	return 0;
 }

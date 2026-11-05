@@ -1,23 +1,23 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm(void) : name("nameless"), is_signed(false), required_grade_for_signing(1), required_grade_for_executing(1)
+AForm::AForm(void) : name("nameless"), status_signed(false), required_grade_for_signing(1), required_grade_for_executing(1)
 {
 }
 
-AForm::AForm(std::string name) : name(name.empty() ? "nameless" : name), is_signed(false), required_grade_for_signing(1), required_grade_for_executing(1)
+AForm::AForm(std::string name) : name(name.empty() ? "nameless" : name), status_signed(false), required_grade_for_signing(1), required_grade_for_executing(1)
 {
 }
 
 AForm::AForm(std::string name, size_t required_grade_for_signing, size_t required_grade_for_executing)
 	: name(name.empty() ? "nameless" : name),
-	  is_signed(false),
+	  status_signed(false),
 	  required_grade_for_signing(!required_grade_for_signing ? throw GradeTooHighException() : required_grade_for_signing > 150 ? throw GradeTooLowException() : required_grade_for_signing),
 	  required_grade_for_executing(!required_grade_for_executing ? throw GradeTooHighException() : required_grade_for_executing > 150 ? throw GradeTooLowException() : required_grade_for_executing)
 {
 }
 
-AForm::AForm(AForm &src) : name(src.name), is_signed(src.is_signed), required_grade_for_signing(src.required_grade_for_signing), required_grade_for_executing(src.required_grade_for_executing)
+AForm::AForm(AForm &src) : name(src.name), status_signed(src.status_signed), required_grade_for_signing(src.required_grade_for_signing), required_grade_for_executing(src.required_grade_for_executing)
 {
 }
 
@@ -43,7 +43,7 @@ void	AForm::beSigned(Bureaucrat &target)
 	if (target.getGrade() > this->required_grade_for_signing)
 		throw GradeTooLowException();
 	else
-		this->is_signed = true;
+		this->status_signed = true;
 }
 
 const char*	AForm::GradeTooHighException::what() const throw()
@@ -63,8 +63,17 @@ std::ostream	&operator<<(std::ostream &os, const AForm &obj)
 	return os;
 }
 
+// bool	AForm::is_signed() const
+// {
+// 	return this->status_signed;
+// }
+
+
+
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->required_grade_for_executing)
-		throw AForm::GradeTooLowException();
+	if (!this->status_signed && executor.getGrade() > this->required_grade_for_executing)
+		throw GradeTooLowException();
+	else
+		execution();
 }

@@ -69,7 +69,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "Grade is too low!";
 }
 
-void Bureaucrat::signForm(Form	&form) // TODO: const after here . understand more should help
+void Bureaucrat::signForm(AForm	&form) // TODO: const after here . understand more should help
 {
 	try
 	{
