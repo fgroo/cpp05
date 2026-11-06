@@ -9,7 +9,7 @@ class RobotomyRequestForm : public AForm
 		std::string target;
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(std::string target);
-		void	execute();
+		void	execution() const;
 };
 
 

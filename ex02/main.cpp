@@ -1,5 +1,9 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
 
 int main()
 {
@@ -41,6 +45,7 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 
+
 	try
 	{
 		Bureaucrat Büro3("Correct", 67);
@@ -60,9 +65,25 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
 
 	std::cout << "next part: the form" << std::endl;
+
+	try
+	{
+		Bureaucrat	super("amazing", 30);
+		ShrubberyCreationForm	shrub;
+		shrub.beSigned(super);
+		shrub.execution();
+	}
+	catch (Bureaucrat::GradeTooHighException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (Bureaucrat::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
 
 	// Bureaucrat	toolow("too low", 130);
 	// Form		form("for the students", 30, 10);

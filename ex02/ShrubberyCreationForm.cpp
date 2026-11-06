@@ -7,7 +7,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("shrubbery", 145, 137
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("shrubbery", 145, 137), target(target) {}
 
-void ShrubberyCreationForm::execute() // TODO: test write
+void ShrubberyCreationForm::execution() const // TODO: test write
 {
 	std::FILE *fd;
 	const	std::string target = this->target + "_shrubbery";
@@ -29,7 +29,7 @@ void ShrubberyCreationForm::execute() // TODO: test write
 		"         |  |\n"
 		" ______/____\\____\n";
 
-	fwrite(tree.c_str(), tree.length(), 0, fd);
+	fwrite(tree.c_str(), 1, tree.length(), fd);
 	fclose(fd);
 }
 

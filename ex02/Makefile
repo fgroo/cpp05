@@ -30,7 +30,7 @@ $(NAME) : $(OBJ)
 	$(CXX) $(CXXFLAGS) $(INC) -c $< -o $@
 
 clean :
-	rm -fr $(OBJ) $(DEP) *.gch a.out
+	rm -fr $(OBJ) $(DEP) *.gch a.out *_shrubbery
 fclean : clean
 	rm -fr $(NAME)
 re : fclean all

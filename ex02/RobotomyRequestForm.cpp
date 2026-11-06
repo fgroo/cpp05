@@ -4,7 +4,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", 72, 45), target("
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy", 72, 45), target(target) {}
 
-void	RobotomyRequestForm::execute()
+void	RobotomyRequestForm::execution() const
 {
 	static	int fifthy = 1; // question: does it has to be random?
 
