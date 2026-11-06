@@ -72,8 +72,7 @@ std::ostream	&operator<<(std::ostream &os, const AForm &obj)
 
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	if (!this->status_signed && executor.getGrade() > this->required_grade_for_executing)
+	if (!this->status_signed || executor.getGrade() > this->required_grade_for_executing)
 		throw GradeTooLowException();
-	else
-		execution();
+	execution();
 }

@@ -25,6 +25,10 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
 	try
 	{
@@ -44,7 +48,10 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
 	try
 	{
@@ -65,32 +72,94 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
 	std::cout << "next part: the form" << std::endl;
 
 	try
 	{
 		Bureaucrat	super("amazing", 30);
-		ShrubberyCreationForm	shrub;
-		shrub.beSigned(super);
-		shrub.execution();
+		ShrubberyCreationForm	form;
+		form.beSigned(super);
+		form.execute(super);
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch (AForm::GradeTooHighException &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException &e)
+	catch (AForm::GradeTooLowException &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
+	try
+	{
+		Bureaucrat	super("amazing", 30);
+		RobotomyRequestForm	form;
+		form.beSigned(super);
+		form.execute(super);
+		form.execute(super);
+		form.execute(super);
+	}
+	catch (AForm::GradeTooHighException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
-	// Bureaucrat	toolow("too low", 130);
-	// Form		form("for the students", 30, 10);
-	// toolow.signForm(form);
+	try
+	{
+		Bureaucrat	super("amazing", 30);
+		PresidentialPardonForm	form;
+		form.beSigned(super);
+		form.execute(super);
+	}
+	catch (AForm::GradeTooHighException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
-	// Bureaucrat	toolow2("too high", 5);
-	// toolow2.signForm(form);
+	try
+	{
+		Bureaucrat	super("amazing", 1);
+		PresidentialPardonForm	form("SUPREME LEADER");
+		form.beSigned(super);
+		form.execute(super);
+	}
+	catch (AForm::GradeTooHighException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (AForm::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << "unexpected: " << e.what() << std::endl;
+	}
 
 	return 0;
 }
