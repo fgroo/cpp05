@@ -147,6 +147,7 @@ int main()
 		PresidentialPardonForm	form("SUPREME LEADER");
 		form.beSigned(super);
 		form.execute(super);
+		super.executeForm(form);
 	}
 	catch (AForm::GradeTooHighException &e)
 	{
